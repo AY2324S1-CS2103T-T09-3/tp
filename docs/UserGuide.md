@@ -81,8 +81,8 @@ Format: `add-doctor n/NAME ic/IC g/GENDER p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TA
 **Tip:**
 A person can have any number of tags (including 0)
 </div>
-<div markdown="span" class="alert alert-primary">:note:
-**Take Note:**
+<div markdown="span" class="alert alert-primary">
+:note: **Take Note:**
 
 - A doctor **MUST** have a non-empty NAME and a valid IC at the very least. 
 Failure to include these details may result in an error.
@@ -103,8 +103,9 @@ Adds a Patient to the hospital database.
 
 Format: `add-patient n/NAME ic/IC g/GENDER p/PHONE_NUMBER ec/EMERGENCY_CONTACT e/EMAIL a/ADDRESS [t/TAG] [d/DOCTOR] [c/CONDITION] [b/BLOODTYPE] …​`
 
-<div markdown="span" class="alert alert-primary">:note:
-**Take Note:**
+<div markdown="span" class="alert alert-primary">
+:note: **Take Note:**
+
 
 - A patient **MUST** have a non-empty NAME and a valid IC at the very least. Failure to include these details may result in an error.
 - Phone Numbers and Emails have to be in a valid format.
@@ -113,6 +114,7 @@ Format: `add-patient n/NAME ic/IC g/GENDER p/PHONE_NUMBER ec/EMERGENCY_CONTACT e
 - DOCTOR must contain the valid IC of a doctor in the Database.
 - EMERGENCY_CONTACT must contain valid emergency contact number, which needs to be a valid phone number.
 - Blood type must be a combination of A/B/AB/O and +/-
+</div>
 
 Examples:
 * `add-patient n/John Doe ic/S9851386G g/M p/98765432 ec/90123456 e/johnd@example.com a/John street, block 123, #01-01 d/T0123456H c/pneumothorax b/O+`
@@ -124,8 +126,8 @@ Creates a new appointment for patients.
 
 Format: `new-appt pic/IC dic/IC time/yyyy-MM-dd HH:mm:ss`
 
-<div markdown="span" class="alert alert-primary">:note:
-**Take Note:**
+<div markdown="span" class="alert alert-primary">
+:note: **Take Note:**
 
 - All fields are Required.
 - EMAIL must follow the specified format (ie. `yyyy-MM-dd HH:mm:ss`).
@@ -134,7 +136,7 @@ Format: `new-appt pic/IC dic/IC time/yyyy-MM-dd HH:mm:ss`
 </div>
 
 Examples:
-* `new-appt pic/T0123456H dic/S9851586G time/yyyy-MM-dd 13:00:00`
+* `new-appt pic/T0123456H dic/S9851586G time/2023-10-23 13:00:00`
 
 ### Listing all persons : `list`
 
@@ -258,13 +260,16 @@ _Details coming soon ..._
 
 ## Command summary
 
-| Action          | Format, Examples                                                                                                                                                                                                                                                                                             |
-|-----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **New Doctor**  | `add-doctor n/NAME ic/IC g/GENDER p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add Doctor n/John Doe ic/S9851386G g/M p/98765432 e/johnd@example.com a/John street, block 123, #01-01 pt/T0123456H`                                                                               |
-| **New Patient** | `add-patient n/NAME ic/IC g/GENDER p/PHONE_NUMBER ec/EMERGENCY_CONTACT e/EMAIL a/ADDRESS [t/TAG] [d/DOCTOR] [c/CONDITION] [b/BLOODTYPE] …​` <br> e.g., `add Patient n/John Doe ic/S9851386G g/M p/98765432 ec/90123456 e/johnd@example.com a/John street, block 123, #01-01 d/T0123456H c/pneumothorax b/O+` |
-| **Clear**       | `clear`                                                                                                                                                                                                                                                                                                      |
-| **Delete**      | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                                                                                                          |
-| **Edit**        | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                                                                                                                  |
-| **Find**        | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                                                                                                                                                                   |
-| **List**        | `list`                                                                                                                                                                                                                                                                                                       |
-| **Help**        | `help`                                                                                                                                                                                                                                                                                                       |
+| Action              | Format, Examples                                                                                                                                                                                                                                                                                             |
+|---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **New Doctor**      | `add-doctor n/NAME ic/IC g/GENDER p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add-doctor n/John Doe ic/S9851386G g/M p/98765432 e/johnd@example.com a/John street, block 123, #01-01 pt/T0123456H`                                                                                               |
+| **New Patient**     | `add-patient n/NAME ic/IC g/GENDER p/PHONE_NUMBER ec/EMERGENCY_CONTACT e/EMAIL a/ADDRESS [t/TAG] [d/DOCTOR] [c/CONDITION] [b/BLOODTYPE] …​` <br> e.g., `add-patient n/John Doe ic/S9851386G g/M p/98765432 ec/90123456 e/johnd@example.com a/John street, block 123, #01-01 d/T0123456H c/pneumothorax b/O+` |
+| **New Appointment** | `new-appt pic/IC dic/IC time/yyyy-MM-dd HH:mm:ss` <br> e.g., `new-appt pic/T0123456H dic/S9851586G time/2023-10-23 13:00:00`                                                                                                                                                                                 |
+| **Clear**           | `clear`                                                                                                                                                                                                                                                                                                      |
+| **Undo**            | `undo`                                                                                                                                                                                                                                                                                                       |
+| **Redo**            | `redo`                                                                                                                                                                                                                                                                                                       |
+| **Delete**          | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                                                                                                          |
+| **Edit**            | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                                                                                                                  |
+| **Find**            | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                                                                                                                                                                   |
+| **List**            | `list`                                                                                                                                                                                                                                                                                                       |
+| **Help**            | `help`                                                                                                                                                                                                                                                                                                       |
